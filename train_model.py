@@ -129,6 +129,18 @@ class SentimentModelTrainer:
         if len(texts) == 0:
             raise ValueError("No valid text data found!")
         
+        # Filter out classes with fewer than 2 samples (required for stratified split)
+        label_counts = pd.Series(labels).value_counts()
+        valid_labels = set(label_counts[label_counts >= 2].index)
+        filtered_indices = [i for i, label in enumerate(labels) if label in valid_labels]
+        
+        removed_count = len(texts) - len(filtered_indices)
+        if removed_count > 0:
+            print(f"\nRemoved {removed_count} samples from classes with < 2 members")
+        
+        texts = [texts[i] for i in filtered_indices]
+        labels = [labels[i] for i in filtered_indices]
+        
         print(f"\nTraining with {len(texts)} samples")
         print(f"Label distribution: {pd.Series(labels).value_counts().to_dict()}")
         
