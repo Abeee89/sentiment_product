@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { PieChart, Pie, Cell, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import { sentimentAPI } from '../services/api';
 import './ResultsDisplay.css';
@@ -14,14 +14,7 @@ const ResultsDisplay = ({ uploadResult, datasetId }) => {
   const [modelInfo, setModelInfo] = useState(null);
   const [loading, setLoading] = useState(false);
 
-  useEffect(() => {
-    if (uploadResult || datasetId) {
-      loadStatistics();
-      loadModelInfo();
-    }
-  }, [uploadResult, datasetId]);
-
-  const loadStatistics = async () => {
+  const loadStatistics = useCallback(async () => {
     setLoading(true);
     try {
       const id = datasetId || uploadResult?.dataset_id;
@@ -32,9 +25,9 @@ const ResultsDisplay = ({ uploadResult, datasetId }) => {
     } finally {
       setLoading(false);
     }
-  };
+  }, [datasetId, uploadResult]);
 
-  const loadModelInfo = async () => {
+  const loadModelInfo = useCallback(async () => {
     try {
       const data = await sentimentAPI.getModelInfo();
       if (data.success) {
@@ -43,7 +36,14 @@ const ResultsDisplay = ({ uploadResult, datasetId }) => {
     } catch (error) {
       console.error('Error loading model info:', error);
     }
-  };
+  }, []);
+
+  useEffect(() => {
+    if (uploadResult || datasetId) {
+      loadStatistics();
+      loadModelInfo();
+    }
+  }, [uploadResult, datasetId, loadStatistics, loadModelInfo]);
 
   const handleRetrain = async () => {
     if (!window.confirm('Retrain the model with all available data? This may take a few minutes.')) {

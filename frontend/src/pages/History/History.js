@@ -4,11 +4,9 @@ import {
   FileText, 
   Download, 
   Eye, 
-  Trash2,
   Calendar,
   BarChart3,
-  Search,
-  Filter
+  Search
 } from 'lucide-react';
 import { sentimentAPI } from '../../services/api';
 import './History.css';

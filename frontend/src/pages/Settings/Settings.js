@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Settings as SettingsIcon, Moon, Sun, Globe, Bell, Shield, Database } from 'lucide-react';
+import { Sun, Globe, Bell, Shield, Database } from 'lucide-react';
 import './Settings.css';
 
 const Settings = () => {

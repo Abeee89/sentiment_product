@@ -13,9 +13,6 @@ const FileUpload = ({ onUploadSuccess, onUploadError }) => {
     const file = acceptedFiles[0];
     
     // Validate file type
-    const allowedTypes = ['text/csv', 'application/vnd.ms-excel', 
-                         'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
-                         'text/tab-separated-values'];
     const fileExtension = file.name.split('.').pop().toLowerCase();
     const allowedExtensions = ['csv', 'xlsx', 'xls', 'tsv'];
     
