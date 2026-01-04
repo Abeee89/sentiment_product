@@ -1,0 +1,151 @@
+.results-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 20px auto;
+  padding: 20px;
+}
+
+.results-header {
+  margin-bottom: 30px;
+}
+
+.results-header h2 {
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.upload-info {
+  background-color: #f5f5f5;
+  padding: 15px;
+  border-radius: 5px;
+  border-left: 4px solid #4CAF50;
+}
+
+.upload-info p {
+  margin: 5px 0;
+  color: #666;
+}
+
+.charts-section {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 30px;
+  margin: 30px 0;
+}
+
+.chart-container {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.chart-container h3 {
+  margin-top: 0;
+  color: #333;
+  text-align: center;
+}
+
+.statistics-summary {
+  margin: 30px 0;
+}
+
+.statistics-summary h3 {
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.stat-card {
+  background: white;
+  padding: 25px;
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  border-top: 4px solid;
+}
+
+.stat-card.positive {
+  border-top-color: #4CAF50;
+}
+
+.stat-card.neutral {
+  border-top-color: #FF9800;
+}
+
+.stat-card.negative {
+  border-top-color: #F44336;
+}
+
+.stat-value {
+  font-size: 36px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 5px;
+}
+
+.stat-label {
+  font-size: 16px;
+  color: #666;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 5px;
+}
+
+.stat-percentage {
+  font-size: 14px;
+  color: #999;
+}
+
+.model-actions {
+  margin-top: 40px;
+  text-align: center;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+}
+
+.retrain-button {
+  background-color: #2196F3;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.retrain-button:hover:not(:disabled) {
+  background-color: #1976D2;
+}
+
+.retrain-button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.retrain-hint {
+  margin-top: 10px;
+  color: #666;
+  font-size: 14px;
+}
+
+.loading {
+  text-align: center;
+  padding: 20px;
+  color: #666;
+}
+
+.no-results {
+  text-align: center;
+  padding: 40px;
+  color: #999;
+  font-size: 18px;
+}
+
