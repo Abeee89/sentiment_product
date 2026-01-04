@@ -1,52 +1,36 @@
 import React, { useState } from 'react';
-import FileUpload from './components/FileUpload';
-import ResultsDisplay from './components/ResultsDisplay';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Sidebar from './components/Sidebar';
+import Dashboard from './pages/Dashboard';
+import Analysis from './pages/Analysis';
+import History from './pages/History';
+import ModelInfo from './pages/ModelInfo';
+import Reports from './pages/Reports';
+import Settings from './pages/Settings';
 import './App.css';
 
 function App() {
-  const [uploadResult, setUploadResult] = useState(null);
-  const [error, setError] = useState(null);
-
-  const handleUploadSuccess = (result) => {
-    setUploadResult(result);
-    setError(null);
-  };
-
-  const handleUploadError = (errorMessage) => {
-    setError(errorMessage);
-    setUploadResult(null);
-  };
+  const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <h1>📊 Product Sentiment Analysis System</h1>
-        <p className="subtitle">Upload sales data to analyze customer sentiment</p>
-      </header>
-
-      <main className="App-main">
-        <div className="upload-section">
-          <h2>Upload Dataset</h2>
-          <FileUpload
-            onUploadSuccess={handleUploadSuccess}
-            onUploadError={handleUploadError}
-          />
-          {error && (
-            <div className="error-message">
-              <strong>Error:</strong> {error}
-            </div>
-          )}
-        </div>
-
-        {uploadResult && (
-          <ResultsDisplay uploadResult={uploadResult} />
-        )}
-      </main>
-
-      <footer className="App-footer">
-        <p>Sentiment Analysis System - Machine Learning Powered</p>
-      </footer>
-    </div>
+    <Router>
+      <div className="app-container">
+        <Sidebar 
+          isCollapsed={sidebarCollapsed} 
+          setIsCollapsed={setSidebarCollapsed} 
+        />
+        <main className={`main-content ${sidebarCollapsed ? 'expanded' : ''}`}>
+          <Routes>
+            <Route path="/" element={<Dashboard />} />
+            <Route path="/analysis" element={<Analysis />} />
+            <Route path="/history" element={<History />} />
+            <Route path="/model" element={<ModelInfo />} />
+            <Route path="/reports" element={<Reports />} />
+            <Route path="/settings" element={<Settings />} />
+          </Routes>
+        </main>
+      </div>
+    </Router>
   );
 }
 
