@@ -1,0 +1,6 @@
+{
+  "version": 2,
+  "model_type": "MultinomialNB",
+  "vectorizer_type": "TfidfVectorizer",
+  "max_features": 5000
+}

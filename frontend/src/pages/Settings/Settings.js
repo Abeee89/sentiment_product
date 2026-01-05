@@ -1,11 +1,9 @@
 import React, { useState } from 'react';
-import { Sun, Globe, Bell, Shield, Database } from 'lucide-react';
+import { Settings as SettingsIcon, Moon, Sun, Globe, Bell, Shield, Database } from 'lucide-react';
 import './Settings.css';
 
-const Settings = () => {
-  const [darkMode, setDarkMode] = useState(false);
+const Settings = ({ darkMode, setDarkMode, language, setLanguage }) => {
   const [notifications, setNotifications] = useState(true);
-  const [language, setLanguage] = useState('en');
 
   return (
     <div className="settings-page">

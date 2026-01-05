@@ -11,12 +11,12 @@
 .settings-header h1 {
   font-size: 2rem;
   font-weight: 700;
-  color: #1e293b;
+  color: var(--text-primary);
   margin: 0;
 }
 
 .settings-subtitle {
-  color: #64748b;
+  color: var(--text-secondary);
   margin: 8px 0 0 0;
 }
 
@@ -27,10 +27,11 @@
 }
 
 .settings-section {
-  background: white;
+  background: var(--card-bg);
   border-radius: 16px;
   padding: 24px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  border: 1px solid var(--border-color);
 }
 
 .section-header {
@@ -45,7 +46,7 @@
   margin: 0;
   font-size: 1.1rem;
   font-weight: 600;
-  color: #1e293b;
+  color: var(--text-primary);
 }
 
 .settings-group {
@@ -59,8 +60,9 @@
   justify-content: space-between;
   align-items: center;
   padding: 16px;
-  background: #f8fafc;
+  background: var(--bg-primary);
   border-radius: 12px;
+  border: 1px solid var(--border-color);
 }
 
 .setting-item.column {
@@ -77,12 +79,12 @@
 
 .setting-label {
   font-weight: 600;
-  color: #1e293b;
+  color: var(--text-primary);
 }
 
 .setting-desc {
   font-size: 0.85rem;
-  color: #64748b;
+  color: var(--text-secondary);
 }
 
 /* Toggle Switch */
@@ -111,6 +113,10 @@
   border-radius: 28px;
 }
 
+.dark-mode .slider {
+  background-color: #475569;
+}
+
 .slider::before {
   position: absolute;
   content: "";
@@ -135,11 +141,11 @@
 /* Select */
 .setting-select {
   padding: 10px 16px;
-  border: 2px solid #e2e8f0;
+  border: 2px solid var(--border-color);
   border-radius: 8px;
   font-size: 0.95rem;
-  color: #1e293b;
-  background: white;
+  color: var(--text-primary);
+  background: var(--card-bg);
   cursor: pointer;
   min-width: 160px;
 }
@@ -152,10 +158,11 @@
 /* Input */
 .setting-input {
   padding: 12px 16px;
-  border: 2px solid #e2e8f0;
+  border: 2px solid var(--border-color);
   border-radius: 8px;
   font-size: 0.95rem;
-  color: #1e293b;
+  color: var(--text-primary);
+  background: var(--card-bg);
   width: 100%;
 }
 
@@ -167,9 +174,9 @@
 /* Buttons */
 .danger-btn {
   padding: 10px 20px;
-  background: #fef2f2;
+  background: rgba(220, 38, 38, 0.1);
   color: #dc2626;
-  border: 1px solid #fecaca;
+  border: 1px solid rgba(220, 38, 38, 0.2);
   border-radius: 8px;
   font-weight: 500;
   cursor: pointer;
@@ -177,14 +184,14 @@
 }
 
 .danger-btn:hover {
-  background: #fee2e2;
+  background: rgba(220, 38, 38, 0.2);
 }
 
 .secondary-btn {
   padding: 10px 20px;
-  background: #f1f5f9;
-  color: #475569;
-  border: 1px solid #e2e8f0;
+  background: var(--bg-secondary);
+  color: var(--text-secondary);
+  border: 1px solid var(--border-color);
   border-radius: 8px;
   font-weight: 500;
   cursor: pointer;
@@ -192,14 +199,15 @@
 }
 
 .secondary-btn:hover {
-  background: #e2e8f0;
+  background: var(--border-color);
+  color: var(--text-primary);
 }
 
 /* Footer */
 .settings-footer {
   margin-top: 40px;
   text-align: center;
-  color: #94a3b8;
+  color: var(--text-secondary);
   font-size: 0.85rem;
 }
 

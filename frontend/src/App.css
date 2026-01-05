@@ -1,3 +1,23 @@
+:root {
+  --bg-primary: #f1f5f9;
+  --bg-secondary: #e2e8f0;
+  --text-primary: #1e293b;
+  --text-secondary: #64748b;
+  --card-bg: #ffffff;
+  --border-color: #e2e8f0;
+  --sidebar-width: 260px;
+  --sidebar-collapsed-width: 80px;
+}
+
+.dark-mode {
+  --bg-primary: #0f172a;
+  --bg-secondary: #1e293b;
+  --text-primary: #f8fafc;
+  --text-secondary: #94a3b8;
+  --card-bg: #1e293b;
+  --border-color: #334155;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -9,7 +29,9 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #f1f5f9;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* App Container with Sidebar Layout */
@@ -20,14 +42,15 @@ body {
 
 .main-content {
   flex: 1;
-  margin-left: 260px;
+  margin-left: var(--sidebar-width);
   min-height: 100vh;
-  transition: margin-left 0.3s ease;
-  background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
+  transition: margin-left 0.3s ease, background 0.3s ease;
+  background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+  padding: 20px;
 }
 
 .main-content.expanded {
-  margin-left: 80px;
+  margin-left: var(--sidebar-collapsed-width);
 }
 
 /* Scrollbar Styling */
@@ -37,12 +60,16 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: #f1f5f9;
+  background: var(--bg-primary);
 }
 
 ::-webkit-scrollbar-thumb {
   background: #cbd5e1;
   border-radius: 4px;
+}
+
+.dark-mode ::-webkit-scrollbar-thumb {
+  background: #475569;
 }
 
 ::-webkit-scrollbar-thumb:hover {
@@ -51,8 +78,12 @@ body {
 
 /* General Typography */
 h1, h2, h3, h4, h5, h6 {
-  color: #1e293b;
+  color: var(--text-primary);
   font-weight: 600;
+}
+
+p {
+  color: var(--text-secondary);
 }
 
 /* Utility Classes */
@@ -82,7 +113,8 @@ h1, h2, h3, h4, h5, h6 {
 @media (max-width: 768px) {
   .main-content {
     margin-left: 0;
-    padding-bottom: 80px;
+    padding: 20px;
+    padding-top: 80px; /* Space for mobile header if needed */
   }
   
   .main-content.expanded {
@@ -90,3 +122,25 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
+.mobile-menu-btn {
+  display: none;
+  position: fixed;
+  top: 15px;
+  left: 15px;
+  z-index: 1100;
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  padding: 8px;
+  border-radius: 8px;
+  cursor: pointer;
+  color: var(--text-primary);
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+@media (max-width: 768px) {
+  .mobile-menu-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
